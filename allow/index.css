@@ -111,22 +111,21 @@ input{
 #menu{
 	position:absolute;
 	top:0;
-	height: 2.4vw;
-	bottom:auto;
-	padding-left:1.5vw;
+	left:0;
+	width: 12vw;
+	bottom:0;
 	z-index: 2;
-	right: 0;
-	background:#3D5FE9;
+	background:#3d7c8b;
+	padding-top:8%;
 }
 
 #menu>div{
 	vertical-align: top;
 	position:relative;
 	margin-top:0.4vw;
-	height:1.6vw;
-	line-height:1.6vw;
+	height:15%;
+	padding-top: 40%;
 	display:inline-block;
-	/* padding: 0 1.5vw; */
 	text-align: center;
 	width: 10vw;
 	text-transform:uppercase;
@@ -136,11 +135,26 @@ input{
 	background:none;
 	color:#fafafa;
 	font-weight:700;
-	border-right:2px solid #fafafa;
+	background-size:25%;
+	background-repeat:no-repeat;
+	background-position: top+35% center;
+}
+
+#menu>div[route="grants"]{
+	background-image:url(img/folder.png);
+}
+
+#menu>div[route="settings"]{
+	background-image:url(img/settings.png);
+}
+
+#menu>div[route="effort_reporting"]{
+	background-image:url(img/people_book.png);
 }
 
 #menu>div.selected{
 	font-size:1vw;
+	font-weight:bold;
 }
 
 #menu>div:hover{
