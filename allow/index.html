@@ -3,39 +3,47 @@
 <title>grant_management_tool</title>
 <link rel="icon" href="/generic/allow/img/favicon.ico" type="image/x-icon">
 <link href="index.css" rel="stylesheet">
-<script src="/generic/allow/js/lib/jquery-1.11.1.min.js"></script>
-<script src="/generic/allow/js/lib/jquery.tablesorter.min.js"></script>
-<script src="/generic/allow/js/lib/jquery.validate.js"></script>
-<script src="/generic/allow/js/lib/jquery.json-2.2.min.js"></script>
-<script src="/generic/allow/js/gen.js"></script>
-<script src="/generic/allow/js/painters.js"></script>
-<script src="/generic/allow/js/api.js"></script>
-<script src="/generic/allow/js/tree.js"></script>
-<script src="/generic/allow/js/tab.js"></script>
-<script src='/generic/allow/js/tags.js'></script>
-<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAgO28lkby4YhqHgsqNShf5qyXmO75my5A&libraries=places"></script>
-<script src="/generic/allow/js/gmaps.js"></script>
-<script src="/generic/allow/js/item_card.js"></script>
-<script src="/generic/allow/js/popup.js"></script>
-<script src="//apis.google.com/js/platform.js" async defer></script>
-<script src="//apis.google.com/js/api:client.js"></script>
-<script src="/generic/allow/js/google_auth.js"></script>
-<script src="https://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
-<script src="/generic/allow/js/login.js"></script>
-<script src="/generic/allow/js/lang.js"></script>
-<script src="/generic/allow/js/fresh.js"></script>
-<script src="/generic/allow/js/uploader.js"></script>
-<script src="/generic/allow/js/radar_chart.js"></script>
-<script src="/generic/allow/js/relation_tab.js"></script>
-<script src="/generic/allow/js/autocomplete.js"></script>
-<script src="/generic/allow/js/ui_element.js"></script>
-<script src="/generic/allow/js/ui_elements/table_list.js"></script>
-<link href="/generic/allow/js/ui_elements/table_list.css" rel="stylesheet">
-<script src="/generic/allow/js/ui_elements/ui_tabs.js"></script>
-<script src="/generic/allow/js/ui_elements/ui_carousel/ui_carousel.js"></script>
-<link href="/generic/allow/js/ui_elements/ui_carousel/ui_carousel.css" rel="stylesheet">
-<script src="/generic/allow/js/ui_elements/ui_tag/ui_tag.js"></script>
-<link href="/generic/allow/js/ui_elements/ui_tag/ui_tag.css" rel="stylesheet">
-<script src='config.js'></script>
-<script src="index.js"></script>
-<script src="state.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgO28lkby4YhqHgsqNShf5qyXmO75my5A&libraries=places"></script>
+<script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.18.12/package/dist/xlsx.full.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://apis.google.com/js/api:client.js" gapi_processed="true"></script>
+<script src="https://apis.google.com/js/platform.js" async="" defer="" gapi_processed="true"></script>
+<script>
+    var version;
+    var url='/generic/allow/api.php';
+    if (window.location.origin.indexOf('file://') != -1) {
+        url = 'https://www.warpcore.io'+url;
+    }
+    $.ajax({
+        'cache':false,
+        'type':"POST",
+        'data': {'data':'[{"apiTargetApp":"'+location.pathname.split('/')[1]+'","target":"'+location.host+'","parameters":{"m":"fetch_version_number","app":"'+location.pathname.split('/')[1]+'","cached":false}}]'},
+        'url': url,
+        'crossDomain': true,
+        'dataType': 'json',
+        'xhrFields': { 'withCredentials': true },
+        beforeSend: function (request){
+            request.setRequestHeader("Accept-language", 'en');
+        },
+        success: function(data){
+            version=data[0];
+            console.log('Version: '+version);
+
+        },
+        error: function(data){
+            version='failed';
+            console.warn('No version');
+        },
+        complete: function(data) {
+            var origin='';
+            if (window.location.origin.indexOf('file://') !=-1) {
+                var origin='https://www.warpcore.io';
+            }
+            var script = document.createElement('script');
+            script.setAttribute('src',origin+'/generic/allow/js/dynamic_load.js?v='+version);
+            script.type = 'text/javascript';
+            document.head.appendChild(script);
+        }
+    });
+</script>
