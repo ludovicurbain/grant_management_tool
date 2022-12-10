@@ -1,0 +1,83 @@
+[element_class="tabs"] .ui_tabs_content * {
+    position: unset;
+}
+
+.hidden{
+	display: none;
+}
+
+.drop_zone{
+	display:flex;
+	height: 4.25vw;
+	border: 0.25vw #d4d4d4 dashed;
+	cursor:pointer;
+}
+
+input[type="file"]{
+	align-self: center;
+	cursor:pointer;
+}
+
+.drop_zone_has_file{
+	background-color:#03a9f44d;
+}
+
+.drop_zone_file_uploaded{
+	background-color:#0bf4034d;
+}
+
+#import.disabled{
+	background-color: #AAAF;
+	pointer-events: none;
+	box-shadow: inset 0vw 0vw 2vw black;
+}
+
+
+
+.import_wrapper{
+	margin-bottom: 1.25vw;
+}
+
+.drop_zone_highlight{
+	background-color:#d6d6d64d;
+}
+
+.title{
+	cursor:default !important;
+}
+
+.loading_bars{
+	display: none;
+	position: absolute;
+    top: 0%;
+    height: 33%;
+	width: 100%;
+	text-align: left;
+	z-index: 9100;	
+	padding: 2%;
+}
+
+.loading_bars>div{
+	width: 100%;
+	height: 2vw;
+	background-color: #ddd;
+	margin-top: 1vw;
+	line-height: 2vw;
+	font-size: 1vw;
+	font-weight: bold;
+}
+
+.progress{
+	width: 0%;
+	height: 100%;
+	background-color: #4CAF50;
+}
+
+.main{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	overflow: auto;
+}
