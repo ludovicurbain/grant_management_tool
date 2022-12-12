@@ -1,49 +1,63 @@
-<!DOCTYPE html>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>grant_management_tool</title>
-<link rel="icon" href="/generic/allow/img/favicon.ico" type="image/x-icon">
-<link href="index.css" rel="stylesheet">
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgO28lkby4YhqHgsqNShf5qyXmO75my5A&libraries=places"></script>
-<script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.18.12/package/dist/xlsx.full.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script src="https://apis.google.com/js/api:client.js" gapi_processed="true"></script>
-<script src="https://apis.google.com/js/platform.js" async="" defer="" gapi_processed="true"></script>
-<script>
-    var version;
-    var url='/generic/allow/api.php';
-    if (window.location.origin.indexOf('file://') != -1) {
-        url = 'https://www.warpcore.io'+url;
-    }
-    $.ajax({
-        'cache':false,
-        'type':"POST",
-        'data': {'data':'[{"apiTargetApp":"'+location.pathname.split('/')[1]+'","target":"'+location.host+'","parameters":{"m":"fetch_version_number","app":"'+location.pathname.split('/')[1]+'","cached":false}}]'},
-        'url': url,
-        'crossDomain': true,
-        'dataType': 'json',
-        'xhrFields': { 'withCredentials': true },
-        beforeSend: function (request){
-            request.setRequestHeader("Accept-language", 'en');
-        },
-        success: function(data){
-            version=data[0];
-            console.log('Version: '+version);
+<!doctype html>
+<html lang="fr">
+	<meta charset="utf-8">
+	<meta name="description" content="Grant Management Tool">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+	<meta name="keyword" content="Grant Management Tool">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-        },
-        error: function(data){
-            version='failed';
-            console.warn('No version');
-        },
-        complete: function(data) {
-            var origin='';
-            if (window.location.origin.indexOf('file://') !=-1) {
-                var origin='https://www.warpcore.io';
-            }
-            var script = document.createElement('script');
-            script.setAttribute('src',origin+'/generic/allow/js/dynamic_load.js?v='+version);
-            script.type = 'text/javascript';
-            document.head.appendChild(script);
-        }
-    });
-</script>
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+		<link rel="icon" type="image/png" href="favicon-32x32.png" />
+		<title>Grant Management Tool</title>
+		<script src="https://www.google.com/recaptcha/enterprise.js?render=6Lc2SSQdAAAAAPFq16TWmxgsmsTBUEn-JHAoeciK"></script>
+	</head>
+
+	<body>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgO28lkby4YhqHgsqNShf5qyXmO75my5A&libraries=places"></script>
+		<script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.18.12/package/dist/xlsx.full.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+		<script src="https://apis.google.com/js/api:client.js" gapi_processed="true"></script>
+		<script src="https://apis.google.com/js/platform.js" async="" defer="" gapi_processed="true"></script>
+		<script>
+			var version;
+			var url='/generic/allow/api.php';
+			if (window.location.origin.indexOf('file://') != -1) {
+				url = 'https://www.warpcore.io'+url;
+			}
+			$.ajax({
+				'cache':false,
+				'type':"POST",
+				'data': {'data':'[{"apiTargetApp":"'+location.pathname.split('/')[1]+'","target":"'+location.host+'","parameters":{"m":"fetch_version_number","app":"'+location.pathname.split('/')[1]+'","cached":false}}]'},
+				'url': url,
+				'crossDomain': true,
+				'dataType': 'json',
+				'xhrFields': { 'withCredentials': true },
+				beforeSend: function (request){
+					request.setRequestHeader("Accept-language", 'en');
+				},
+				success: function(data){
+					version=data[0];
+					console.log('Version: '+version);
+
+				},
+				error: function(data){
+					version='failed';
+					console.warn('No version');
+				},
+				complete: function(data) {
+					var origin='';
+					if (window.location.origin.indexOf('file://') !=-1) {
+						var origin='https://www.warpcore.io';
+					}
+					var script = document.createElement('script');
+					script.setAttribute('src',origin+'/generic/allow/js/dynamic_load.js?v='+version);
+					script.type = 'text/javascript';
+					document.head.appendChild(script);
+				}
+			});
+		</script>
+		<div class='tawk_to_container' style='display:none !important;'></div>
+	</body>
+</html>

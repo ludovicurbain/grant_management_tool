@@ -4,20 +4,11 @@
 #859CFA;
 */
 
-*:not(select,select *,.pac-container,.pac-container *,.table_list_to_csv){
-	display:block;
-	position:absolute;
-	top:0;
-	left:0;
-	right:0;
-	bottom:0;
+*{
 	padding:0;
 	margin:0;
 	box-sizing:border-box;
-	background:#fafafa;
 	font-family:Arial;
-	transition:opacity 1s;
-	user-select:none;
 }
 
 
@@ -955,4 +946,8 @@ input[autocomplete]{
 [element_class="table_list"].people_list .table_list_to_csv{
 	right: 21.7vw!important;
 	left: auto;
+}
+
+style{
+	display:none;
 }
