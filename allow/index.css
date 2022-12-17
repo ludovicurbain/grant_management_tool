@@ -1001,6 +1001,7 @@ style{
 	position:absolute;
 	top:3vw;
 	right:8vw;
+	z-index: 2;
 }
 
 [element_class="table_list"] [table_list_lines] .table_list_header {
@@ -1017,3 +1018,72 @@ style{
 [element_class="table_list"] [table_list_lines] .table_list_header>div{
 	border:none;
 }
+
+.modal {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 20;
+	border-radius: 0.4vw;
+	display:none;
+}
+
+.modal[layer="0"]{
+	display:block;
+}
+
+.modal_glasspane {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	background: rgba(0, 0, 0, 0.6);
+}
+
+.close_event_wrapper {
+	display: none;
+}
+
+.close_modal {
+	position: absolute;
+	top: -0.75vw;
+	right: 0;
+	height: 1.5vw;
+	width: 1.5vw;
+	background: black url(assets/svg/cancel.svg) no-repeat;
+	background-position: center;
+	background-size: 40%;
+	cursor: pointer;
+	z-index: 2;
+	box-shadow: 0.1vw 0.1vw 0.3vw #999;
+	border-radius: 50%;
+}
+
+.has_hover .close_modal:hover {
+	opacity: 0.5;
+}
+
+.close_modal:hover {
+	opacity: 0.7;
+}
+
+.modal_content {
+	position: absolute;
+	top: 10%;
+	bottom: 10%;
+	left: 10%;
+	right: 10%;
+	background-color: white;
+	z-index: 20;
+	overflow: visible;
+	border-radius: 0.4vw;
+}
+
+body.light_mode .modal_content {
+	background: white;
+}
+

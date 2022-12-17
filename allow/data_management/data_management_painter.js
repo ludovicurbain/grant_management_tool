@@ -32,8 +32,8 @@ function sponsor_data(){
 	return h;
 }
 
-function people_type_data(){
-	var h=paint_generic_list_edit_iclass_tab('people_type');
+function job_category_data(){
+	var h=paint_generic_list_edit_iclass_tab('job_category');
 	return h;
 }
 

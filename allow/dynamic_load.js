@@ -53,6 +53,7 @@ function dynamic_boot() {
 		'js/item_card.js',
 		'js/uploader.js',
 		'js/tags.js',
+		'js/gmaps.js',
 		'js/autocomplete.js'
 	];
 
