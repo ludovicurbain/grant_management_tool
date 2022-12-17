@@ -8,11 +8,19 @@ window.onbeforeunload = function () {
 	}
 };
 
+painters['states']=function(){
+	var h='';
+	for(var state in states){
+		h+='<div id="s_'+state+'" class="state"></div>';
+	}
+	return '<div id=states>'+h+'</div>';
+}
+
 function route(new_route, is_back) {
 	cleanup();
 	new_route=set_new_route(new_route, is_back);
 	enforce_index_html();
-	var route_url=document.URL.split('#')[1].split('?')[0].split('|');
+	var route_url=new_route.replace('#','').split('|');
 	if(!hasProp(states,route_url[0])){
 		console.error('unknown route:' + route_url.join('|'));
 		return route('#'+Object.keys(states)[0]);
@@ -78,10 +86,10 @@ function apply_default_route(current_state,route_url){
 		}
 	}
 	if(reroute_url!=''){
-		route('#'+route_url[0]+reroute_url,true);
 		hide_loader();
+		return route('#'+route_url[0]+reroute_url);
 	}
-	return reroute_url!='';
+	return false;
 }
 
 var states={
