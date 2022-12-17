@@ -14,7 +14,8 @@ function dynamic_boot() {
 	];
 
 	dynamic_load_files.local_css = [
-		'index.css'
+		'index.css',
+		'data_management/data_management.css'
 	];
 
 	dynamic_load_files.specific_css = [
@@ -57,7 +58,11 @@ function dynamic_boot() {
 	dynamic_load_files.local_js = [
 		'config.js',
 		'state.js',
-		'index.js'
+		'index.js',
+		'data_management/data_management.js',
+		'data_management/data_management_loader.js',
+		'data_management/data_management_handler.js',
+		'data_management/data_management_painter.js'
 	];
 
 	dynamic_load_files.specific_js = [

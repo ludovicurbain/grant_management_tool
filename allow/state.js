@@ -9,8 +9,23 @@ window.onbeforeunload = function () {
 };
 
 function route(new_route, is_back) {
+	cleanup();
+	new_route=set_new_route(new_route, is_back);
+	enforce_index_html();
+	var route_url=document.URL.split('#')[1].split('?')[0].split('|');
+	if(!hasProp(states,route_url[0])){
+		console.error('unknown route:' + route_url.join('|'));
+		return route('#'+Object.keys(states)[0]);
+	}
+	load_state(route_url,is_back);
+}
+
+function cleanup(){
 	$('.modal').remove();
 	$('.tooltip').remove();
+}
+
+function set_new_route(new_route, is_back){
 	if (new_route === undefined) {
 		new_route = '';
 	}
@@ -21,46 +36,66 @@ function route(new_route, is_back) {
 		global_object['url']=new_route;
 		history.pushState(global_object, new_route,new_route);
 	}
+	return new_route;
+}
+
+function enforce_index_html(){
 	var url=document.URL;
 	if(url.indexOf('.html')==-1){
-		url+='index.html';
+		var query_string=url.split('?');
+		var square=url.split('#');
+		if(query_string.length>0){
+			url=query_string[0]+'index.html'+'?'+query_string[1];
+		}else if(square.length>0){
+			url=square[0]+'index.html'+'#'+square[1];
+		}else{
+			url+='index.html';
+		}
 		history.replaceState('','',url);
 	}
-	var past_the_square=url.split('.html')[1].split('?');
-	var route_url = past_the_square[0].split('|');
-	route_url[0] = route_url[0].replace('#', '');
-	
-	show_loader(route_url[0]+' - chargement');
-	if(!hasProp(states,route_url[0])){
-		console.error('unknown route:' + route_url.join('|'));
-		hide_loader();
-		return route('#'+Object.keys(states)[0]);
+}
+
+function load_state(route_url,is_back){
+	show_loader(route_url[0]+' - loading...');
+	var current_state=states[route_url[0]];
+	if(apply_default_route(current_state,route_url)){
+		return;
 	}
-	var content=painters.menu();
-	if(hasProp(states[route_url[0]],'function')){
-		content+=states[route_url[0]]['function'](route_url,is_back);
+	if(hasProp(current_state,'loader')){
+		$('#s_'+route_url[0]).html(current_state['loader'](route_url,is_back));
 	}
-	$('#c').html(content);
 	select_menu_item(route_url[0]);
-	hide_loader();
+}
+
+function apply_default_route(current_state,route_url){
+	if(!hasProp(current_state,'default_route')){
+		return false;
+	}
+	var reroute_url='';
+	for(var i=0;i<current_state['default_route'].length;i++){
+		if(route_url.length<i+2){
+			reroute_url+='|'+current_state['default_route'][i];
+		}
+	}
+	if(reroute_url!=''){
+		route('#'+route_url[0]+reroute_url,true);
+		hide_loader();
+	}
+	return reroute_url!='';
 }
 
 var states={
-	'settings':{
-		'label':'Settings',
-		'function':function(){
-			return '';
-		}
-	},
 	'grants':{
 		'label':'Grants',
-		'function':function(){
+		'loader':function(){
+			hide_loader();
 			return '';
 		}
 	},
 	'effort_reporting':{
 		'label':'Effort Reporting',
-		'function':function(){
+		'loader':function(){
+			hide_loader();
 			return '';
 		}
 	}

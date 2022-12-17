@@ -1,8 +1,7 @@
 $(document).ready(function(){
 	checkLogin();
 	$('body').html(standard_login_container([]));
-	$('body').append(paint_loader()+'<div id=c></div>');
-	
+	$('body').append(paint_loader()+'<div id=c>'+painters.menu()+'</div>');
 	hiddenAttr.push('old_id');
 });
 

@@ -1,7 +1,7 @@
 /*
 #050744;
 #3D5FE9;
-#859CFA;
+rgb(61,124,139);
 */
 
 *{
@@ -74,7 +74,7 @@ input{
 }
 
 .button{
-	background:#859cfa;
+	background:rgb(61,124,139);
 	height: 2vw;
 	line-height: 2vw;
 	text-align:center;
@@ -135,8 +135,8 @@ input{
 	background-image:url(img/folder.png);
 }
 
-#menu>div[route="settings"]{
-	background-image:url(img/settings.png);
+#menu>div[route="data_management"]{
+	background-image:url(img/data_management.png);
 }
 
 #menu>div[route="effort_reporting"]{
@@ -178,7 +178,7 @@ input{
 	width:2vw;
 	bottom:auto;
 	left:auto;
-	background:#859cfa;
+	background:rgb(61,124,139);
 	border-radius:50%;
 	padding:0;
 	cursor:pointer;
@@ -269,7 +269,7 @@ input{
 }
 
 .item_card [relation] .relation_value [element_class="tag"] .tag {
-    background: #859cfa;
+    background: rgb(61,124,139);
 }
 
 .item_card [container] .map_google{
@@ -416,7 +416,7 @@ form.upload{
 }
 
 #change_password_popup td[colspan="2"]{
-	background:#859cfa;
+	background:rgb(61,124,139);
 }
 
 .popupclose{
@@ -429,14 +429,19 @@ form.upload{
 	height:1vw;
 	width:1vw;
 	text-transform:uppercase;
-	color:#859cfa;
+	color:rgb(61,124,139);
 	font-weight:bold;
 }
 
 #loader{
+	position:absolute;
 	display: block;
 	z-index: 9001;
 	background: rgba(0,0,0,0.45);
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
 }
 
 .loader {
@@ -447,7 +452,7 @@ form.upload{
 	left: 20%;
 	border: 15px solid #fafafa;
 	border-radius: 50%;
-	border-top: 15px solid #859cfa;
+	border-top: 15px solid rgb(61,124,139);
 	width: 160px;
 	height: 160px;
 	margin: auto;
@@ -461,7 +466,7 @@ form.upload{
 	width: 130px;
 	height: 130px;
 	background-color: transparent;
-	background-image: url(img/besace_logo.png);
+	background-image: url(img/logo.png);
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 95%;
@@ -511,7 +516,7 @@ form.upload{
 }
 
 [element_class="table_list"] .button{
-	background-color: #859cfa;
+	background-color: rgb(61,124,139);
 }
 
 [element_class="table_list"] [type] .button{
@@ -539,7 +544,7 @@ form.upload{
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 1.2vw;
-	background-color: #859cfa;
+	background-color: rgb(61,124,139);
 }
 
 .stages[element_class="table_list"] .button.add_stage,
@@ -551,7 +556,7 @@ form.upload{
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 1.2vw;
-	background-color: #859cfa;
+	background-color: rgb(61,124,139);
 }
 
 .stages[element_class="table_list"] .button.remove_participant{
@@ -561,7 +566,7 @@ form.upload{
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 1.2vw;
-	background-color: #859cfa;
+	background-color: rgb(61,124,139);
 }
 
 .stages[element_class="table_list"] .button.edit_stage,
@@ -573,7 +578,7 @@ form.upload{
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 1.2vw;
-	background-color: #859cfa;
+	background-color: rgb(61,124,139);
 }
 
 
@@ -742,7 +747,7 @@ form.upload{
 [element_class="table_list"] [table_list_lines] .table_list_header>div{
 	font-weight: bold;
 	text-align: center;
-	color:#859cfa;
+	color:rgb(61,124,139);
 	text-transform:uppercase;
 }
 
@@ -922,7 +927,7 @@ input[autocomplete]{
 }
 
 .autocompleteList>div.autocomplete-active{
-	background:#859cfa;
+	background:rgb(61,124,139);
 }
 
 [element_class="table_list"] .collapse_arrow{
@@ -936,7 +941,7 @@ input[autocomplete]{
 	height: 1.5vw;
 	width: 1.5vw;
 	left: auto;
-	background: #859cfa url(img/close.svg) no-repeat;
+	background: rgb(61,124,139) url(img/close.svg) no-repeat;
 	background-position: center;
 	background-size: 1.2vw;
 	z-index: 2;

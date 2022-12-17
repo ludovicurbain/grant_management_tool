@@ -1,0 +1,146 @@
+#s_orders .ui_tabs_content{
+	background:#ffffff;
+	box-shadow:0.1vw 0.1vw 0.3vw #aaa;
+	border-radius:0.4vw;
+	left:1vw;
+	right:1vw;
+	bottom:1vw;
+}
+
+#s_orders>[element_class="tabs"]{
+	top:1vw;
+}
+
+/* #s_orders .ui_tabs_content>[element_class="table_list"]{
+	top:4vw;
+	left:1vw;
+	right:1vw;
+	bottom:1vw;
+} */
+
+[is_mobile] #s_orders .ui_tabs_content[name="finished"]>[element_class="table_list"] [name="date"],
+[is_mobile] #s_orders .ui_tabs_content[name="finished"]>[element_class="table_list"] [name="due_date"],
+[is_mobile] #s_orders .ui_tabs_content[name="finished"]>[element_class="table_list"] [name="description"],
+[is_mobile] #s_orders .ui_tabs_content[name="ready_for_preparation"]>[element_class="table_list"] [name="date"],
+[is_mobile] #s_orders .ui_tabs_content[name="ready_for_preparation"]>[element_class="table_list"] [name="due_date"],
+[is_mobile] #s_orders .ui_tabs_content[name="ready_for_preparation"]>[element_class="table_list"] [name="description"],
+[is_mobile] #s_orders .ui_tabs_content[name="waiting_on_delivery"]>[element_class="table_list"] [name="date"],
+[is_mobile] #s_orders .ui_tabs_content[name="waiting_on_delivery"]>[element_class="table_list"] [name="due_date"],
+[is_mobile] #s_orders .ui_tabs_content[name="waiting_on_delivery"]>[element_class="table_list"] [name="description"],
+[is_mobile] #s_orders .ui_tabs_content[name="orders_without_order_info"]>[element_class="table_list"] [name="date"],
+[is_mobile] #s_orders .ui_tabs_content[name="orders_without_order_info"]>[element_class="table_list"] [name="description"]{
+	display: none !important;
+}
+
+
+[is_mobile] #s_orders .ui_tabs_content[name="finished"]>[element_class="table_list"] [name="client"],
+[is_mobile] #s_orders .ui_tabs_content[name="finished"]>[element_class="table_list"] [name="actions"],
+[is_mobile] #s_orders .ui_tabs_content[name="ready_for_preparation"]>[element_class="table_list"] [name="client"],
+[is_mobile] #s_orders .ui_tabs_content[name="ready_for_preparation"]>[element_class="table_list"] [name="actions"],
+[is_mobile] #s_orders .ui_tabs_content[name="waiting_on_delivery"]>[element_class="table_list"] [name="client"],
+[is_mobile] #s_orders .ui_tabs_content[name="waiting_on_delivery"]>[element_class="table_list"] [name="actions"],
+[is_mobile] #s_orders .ui_tabs_content[name="orders_without_order_info"]>[element_class="table_list"] [name="client"],
+[is_mobile] #s_orders .ui_tabs_content[name="orders_without_order_info"]>[element_class="table_list"] [name="actions"]{
+	width: 40% !important;
+}
+
+
+.item_card[iclass="order_info"] [attribute="description"]{
+	display:none;
+}
+
+.item_card[iclass="order_info"] [attribute="background_information"]{
+	height:12vw;
+	width:100%;
+}
+
+.item_card[iclass="order_info"] [attribute="background_information"] .ck-editor__editable_inline {
+    min-height: 8vw;
+}
+
+.modal[name="prepare_order_lines"] [element_class="table_list"]{
+	top:5vw;
+	left:1vw;
+	right:1vw;
+}
+
+[prep_status] .button{
+	display:none;
+}
+
+.table_list_line[prep_status] .button.info{
+	display:block;
+	position:absolute;
+	left: -322%;
+	top: 0.15vw;
+	width:1.2vw;
+	height: 1.2vw;
+	border-radius:50%;
+	margin-left:10%;
+	font-size:0;
+	background-image:url('../assets/svg/white/info.svg');
+	background-position:center;
+	background-size:105% auto;
+}
+
+.table_list_line[prep_status] .button.service_files{
+	display:block;
+	position:absolute;
+	left: -1.5vw;
+	top: 0.15vw;
+	width:1.2vw;
+	height: 1.2vw;
+	border-radius:50%;
+	font-size:0;
+	background-image:url('../assets/svg/white/attachment.svg');
+	background-position:center;
+	background-size: 65% auto;
+}
+
+.table_list_line[prep_status] .button.edit_service{
+	display:block;
+	position:absolute;
+	left: -3vw;
+	top: 0.15vw;
+	width:1.2vw;
+	height: 1.2vw;
+	border-radius:50%;
+	font-size:0;
+	background-image:url('../assets/svg/white/edit.svg');
+	background-position:center;
+	background-size: 65% auto;
+}
+
+[prep_status="unstarted"]:not([has_serial="t"]) .button.start,
+[prep_status="finished"]:not([has_serial="t"]) .button.restart{
+	display:inline-block;
+	width:80%;
+}
+
+[prep_status="started"]:not([has_serial="t"]) .button.stop,
+[prep_status="started"]:not([has_serial="t"]) .button.finish{
+	display:inline-block;
+	width: 45%;
+}
+
+[prep_status="started"]:not([has_serial="t"]) .button.stop{
+	margin-right:10%;
+}
+
+body .modal[name="prepare_order_lines"] [element_class="table_list"] [table_list_lines] .table_list_line{
+	overflow:visible;
+}
+
+body .modal[name="prepare_order_lines"] [element_class="table_list"] [table_list_lines] .table_list_line>div{
+	overflow:visible;
+}
+
+body .modal[name="prepare_order_lines"] [element_class="table_list"] [table_list_lines] .table_list_line .autocomplete{
+	overflow:visible;
+}
+
+body .modal[name="prepare_order_lines"] [element_class="table_list"] [table_list_lines] .table_list_line[product_id=""] .button.info,
+body .modal[name="prepare_order_lines"] [element_class="table_list"] [table_list_lines] .table_list_line[service_id=""] .button.edit_service,
+body .modal[name="prepare_order_lines"] [element_class="table_list"] [table_list_lines] .table_list_line[service_id=""] .button.service_files{
+	display:none;
+}
