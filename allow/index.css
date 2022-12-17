@@ -220,13 +220,6 @@ input{
 	margin-bottom:0.4vw;
 }
 
-.item_card [attribute="amount"]{
-    width:50vw;
-    left:50%;
-    margin-left:-25vw;
-    top: 10vw;
-}
-
 .item_card [container] *:not(select *),
 .item_card [attribute] *:not(select *),
 .item_card [relation] .relation_value{
@@ -287,33 +280,6 @@ input{
 	width:100%;
 }
 
-.item_card [container] .attribute_name,
-.item_card [attribute] .attribute_name,
-.item_card [relation] .attribute_name{
-	text-align:left;
-	width:20%;
-	margin-left:10%;
-}
-
-.item_card [attribute="amount"] .attribute_name{
-    width:50vw;
-    left:0vw;
-    text-align:center;
-    margin:0;
-    font-size:1.7vw;
-    text-transform:capitalize;
-}
-.item_card [attribute="amount"] input{
-    width: 20vw;
-    left: 15vw;
-    text-align:center;
-    margin:0;
-    font-size:1.7vw;
-    text-transform:capitalize;
-    height: 4vw;
-    line-height: 4vw;
-    top: 2vw;
-}
 
 .item_card [container] textarea,
 .item_card [container] input,
@@ -324,27 +290,6 @@ input{
 	width:100%;
 }
 
-.item_card .buttonTd{
-	margin-top:3vw;
-	text-align: right;
-	background: none;
-}
-
-.item_card[iclass="payment"]  .buttonTd{
-	top:20vw;
-	width:50vw;
-	left:50%;
-	margin-left:-25vw;
-	position:absolute;
-}
-
-.item_card[iclass="payment"]  .button:nth-last-child(2){
-	display: block;
-	width:10vw;
-	margin: 0;
-	margin-left:-5vw;
-	left: 50%;
-}
 
 .item_card .button{
 	margin-bottom:0.4vw;

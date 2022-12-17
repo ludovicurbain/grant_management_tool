@@ -9,20 +9,13 @@ function paint_state_orders(){
 	});
 }
 
-function people_data(){
-	var h=paint_generic_list_edit_iclass_tab('people');
-	//people + salaries + degrees
-	//tree with supervisors on top, drag and drop to put some1 under a supervisor
-	return h;
-}
-
 function salary_caps(){
 	var h=paint_generic_list_edit_iclass_tab('salary_cap');
 	return h;
 }
 
 function degree_data(){
-	var h=paint_generic_list_edit_iclass_tab('degree');
+	var h=paint_generic_list_edit_iclass_tab('degree_type');
 	return h;
 }
 
@@ -34,6 +27,11 @@ function sponsor_data(){
 
 function job_category_data(){
 	var h=paint_generic_list_edit_iclass_tab('job_category');
+	return h;
+}
+
+function account_code_data(){
+	var h=paint_generic_list_edit_iclass_tab('account_code');
 	return h;
 }
 
