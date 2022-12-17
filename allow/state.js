@@ -20,12 +20,13 @@ function route(new_route, is_back) {
 	cleanup();
 	new_route=set_new_route(new_route, is_back);
 	enforce_index_html();
-	var route_url=new_route.replace('#','').split('|');
-	if(!hasProp(states,route_url[0])){
-		console.error('unknown route:' + route_url.join('|'));
+	global_object['route_url']=new_route.replace('#','').split('|');
+	if(!hasProp(states,global_object['route_url'][0])){
+		console.error('unknown route:' + global_object['route_url'].join('|'));
 		return route('#'+Object.keys(states)[0]);
 	}
-	load_state(route_url,is_back);
+	load_state(is_back);
+	return true;
 }
 
 function cleanup(){
@@ -63,31 +64,31 @@ function enforce_index_html(){
 	}
 }
 
-function load_state(route_url,is_back){
-	show_loader(route_url[0]+' - loading...');
-	var current_state=states[route_url[0]];
-	if(apply_default_route(current_state,route_url)){
+function load_state(is_back){
+	show_loader(global_object['route_url'][0]+' - loading...');
+	var current_state=states[global_object['route_url'][0]];
+	if(apply_default_route(current_state)){
 		return;
 	}
 	if(hasProp(current_state,'loader')){
-		$('#s_'+route_url[0]).html(current_state['loader'](route_url,is_back));
+		$('#s_'+global_object['route_url'][0]).html(current_state['loader'](is_back));
 	}
-	select_menu_item(route_url[0]);
+	select_menu_item(global_object['route_url'][0]);
 }
 
-function apply_default_route(current_state,route_url){
+function apply_default_route(current_state){
 	if(!hasProp(current_state,'default_route')){
 		return false;
 	}
 	var reroute_url='';
 	for(var i=0;i<current_state['default_route'].length;i++){
-		if(route_url.length<i+2){
+		if(global_object['route_url'].length<i+2){
 			reroute_url+='|'+current_state['default_route'][i];
 		}
 	}
 	if(reroute_url!=''){
 		hide_loader();
-		return route('#'+route_url[0]+reroute_url);
+		return route('#'+global_object['route_url'][0]+reroute_url);
 	}
 	return false;
 }

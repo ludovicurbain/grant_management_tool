@@ -133,3 +133,13 @@ function warpcore_float_input() {
         });
     }
 }
+
+$(document).on('click','[element_class="tabs"]:not(.no_route_tab)>.ui_tabs_container_tabs>[name]',function(){
+	var url=copy(global_object['route_url']);
+	var i=url.indexOf($(this).parents('.ui_tabs_container_tabs').find('[label].selected').attr('name'));
+	if(i!=-1){
+		url.splice(i);
+	}
+	url.push($(this).attr('name'));
+	route('#'+url.join('|'));
+});

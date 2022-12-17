@@ -25,7 +25,7 @@ function get_tab_names(ui_tab_config){
 	return a;
 }
 
-function load_data_management(route_url){
-	$('#s_'+route_url[0]).html(paint_state_orders(route_url));
+function load_data_management(){
+	$('#s_'+global_object['route_url'][0]).html(paint_state_orders());
 	hide_loader();
 }
