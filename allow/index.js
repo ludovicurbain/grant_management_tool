@@ -17,8 +17,7 @@ function on_init_lists(){
 }
 
 function preload_data(){
-	var a=[];
-	//var a=['season','week','sport','teacher','people'];
+	var a=['salary_cap','degree_type','account_code','people'];
 	for(var i=0;i<a.length;i++){
 		preload_for_iclass(a[i]);
 	}

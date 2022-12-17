@@ -715,7 +715,7 @@ function paint_generic_list_edit_iclass_tab(iclass){
 }
 
 var item_card_default_relations={};
-item_card_default_relations['contract_blueprint']=[{'iclass':'product'}];
+item_card_default_relations['grants']=[{'iclass':'people'}];
 
 $(document).on('click','.create.button[iclass]',function(){
 	var iclass=$(this).attr('iclass');

@@ -140,7 +140,7 @@ input{
 	background-image:url(img/data_management.png);
 }
 
-#menu>div[route="effort_reporting"]{
+#menu>div[route="people"]{
 	background-image:url(img/people_book.png);
 }
 

@@ -1,4 +1,4 @@
-function paint_state_orders(){
+function paint_state_data_management(){
 	return create_ui_element({
 		'ui_element':{
 			'element_class':'tabs',

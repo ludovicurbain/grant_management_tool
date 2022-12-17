@@ -70,9 +70,8 @@ function load_state(is_back){
 	if(apply_default_route(current_state)){
 		return;
 	}
-	if(hasProp(current_state,'loader')){
-		$('#s_'+global_object['route_url'][0]).html(current_state['loader'](is_back));
-	}
+	$('.state').hide();
+	$('#s_'+global_object['route_url'][0]).html(current_state['loader'](is_back)).show();
 	select_menu_item(global_object['route_url'][0]);
 }
 
@@ -101,11 +100,11 @@ var states={
 			return '';
 		}
 	},
-	'effort_reporting':{
-		'label':'Effort Reporting',
+	'people':{
+		'label':'People',
 		'loader':function(){
 			hide_loader();
-			return '';
+			return 'people';
 		}
 	}
 }
