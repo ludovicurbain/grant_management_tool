@@ -716,6 +716,7 @@ function paint_generic_list_edit_iclass_tab(iclass){
 
 var item_card_default_relations={};
 item_card_default_relations['grants']=[{'iclass':'people'}];
+item_card_default_relations['people']=[{'iclass':'degree_type'}];
 
 $(document).on('click','.create.button[iclass]',function(){
 	var iclass=$(this).attr('iclass');
@@ -730,8 +731,10 @@ $(document).on('click','.create.button[iclass]',function(){
 
 //{'iid':get_full_object_relation_iids(document_data['relations'][iclass]),'relation_label':if_app_string(iclass),'multiple':false,'mandatory':false};
 
-$(document).on('click','.generic_item_list .table_list_line[iid]',function(){
-	var iclass=$(this).parents('[element_class="table_list"]').attr('iclass');
+$(document).on('click','.generic_item_list .table_list_line[iid]',edit_with_generic_relations_popup);
+
+function edit_with_generic_relations_popup(){
+	var iclass=$(this).closest('[iclass]').attr('iclass');
 	var iid=$(this).attr('iid');
 	var get_relations=[];
 	if(hasProp(item_card_default_relations,iclass)){
@@ -747,6 +750,9 @@ $(document).on('click','.generic_item_list .table_list_line[iid]',function(){
 			if(hasProp(item_card_default_relations,iclass)){
 				for(var i=0;i<item_card_default_relations[iclass].length;i++){
 					var iclass_2=item_card_default_relations[iclass][i]['iclass'];
+					if(!hasProp(storage['full_object'][iclass][iid]['relations'],iclass_2)){
+						storage['full_object'][iclass][iid]['relations'][iclass_2]=[];
+					}
 					item_card_relations[iclass_2]={'iid':get_full_object_relation_iids(storage['full_object'][iclass][iid]['relations'][iclass_2]),'relation_label':if_app_string(iclass_2),'multiple':false,'mandatory':false};
 				}
 			}
@@ -760,7 +766,7 @@ $(document).on('click','.generic_item_list .table_list_line[iid]',function(){
 			'relations':get_relations
 		},
 	false);
-});
+}
 
 function item_card_default_override(iclass,item_card_config){
 	switch(iclass){
@@ -905,4 +911,33 @@ function popup_read_item_card(that,config={}){
             create_modal(paint_title_modal(if_app_string('edit_'+iclass))+readitem_card(iclass,config));
         }
     );
+}
+
+$(document).on('keyup','input[type="float"]',warpcore_float_input);
+function warpcore_float_input() {
+    var el = $(this);
+    var new_value = el.val().replace(/,/g,'.');
+    var old_value=new_value.slice(0, -1);
+    var val_max = el.attr('max');
+    var val_min = el.attr('min');
+    if(!/^-?(\d+\.?\d*)?$/.test(new_value)){
+        el.val(old_value);
+    }else{
+        el.val(new_value);
+    }
+    if(typeof val_max != undefined || typeof val_min != undefined){
+        el.one('keydown',function(e){
+            if(e.key == 'Enter'){
+                if(Number(el.val())<Number(val_min)){
+                    el.val(val_min);
+                }
+                if(Number(el.val())>Number(val_max)){
+                    el.val(val_max);
+                }
+                if(el.val()[el.val().length-1] == '.'){
+                    el.val(Math.floor(el.val()));
+                }
+            }
+        });
+    }
 }

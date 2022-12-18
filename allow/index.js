@@ -24,7 +24,18 @@ function preload_data(){
 }
 
 function preload_for_iclass(iclass){
-	api.search_item({'iclass':iclass,'search':''},{},function(data){storage[iclass]=data;},false);	
+	apiCall(
+		{'m':'search_item','search':'','iclass':iclass},
+		function(data){
+			push_to_storage(data);
+		},
+		{
+			'iclass':iclass,
+			'full_object':true,
+			'full_object_relations':[],
+			'paths':{}
+		},
+	false);
 }
 
 $(document).on('click','.bg',function(){
@@ -63,8 +74,8 @@ register_callback(['item_card_edit','category'],function(o){
 });
 
 function generic_new_item_modal(c,app_string,relations={}){
-	api.empty_item({ 'iclass': c['iclass_1'] }, function (data) {
-		create_modal('<div class="title">'+app_string+'</div>' + create_item_card(c['iclass_1'], { 'item': data,"relations": relations,'other_item': { 'iclass': c['iclass_2'], 'iid': c['iid_2'] } }, 'div'));
+	api.empty_item({ 'iclass': c['iclass'] }, function (data) {
+		create_modal('<div class="title">'+app_string+'</div>' + create_item_card(c['iclass'], { 'item': data,"relations": relations,'other_item': { 'iclass': c['iclass_2'], 'iid': c['iid_2'] } }, 'div'));
 	});
 }
 
@@ -76,61 +87,31 @@ painters['menu']=function(){
 	return '<div id=menu>'+s+'</div>';
 };
 
-bubble_click('.button.create_related[iclass_1="season"]',function(c,t){
-	generic_new_item_modal(c,'Nouvelle période');
-});
+function standard_action(s){
+	return  {
+		'CSSclass':s,
+		'name':if_app_string(s),
+		'action':s
+	};
+}
 
 function specific_actions(iclass, item){
-	html = '';
+	var actions = [];
 	var iid = item['id'];
 	switch(iclass){
 		case 'people':
 			if (!isNaN(iid)) {
-				html += '<div class="duplicate button" iid="'+iid+'"><div>Dupliquer</div></div>';
-				html += '<div class="select_new_stage button" iid="'+iid+'"><div>Inscrire à un stage</div></div>';
+				actions.push(standard_action('manage_salaries'));
+				actions.push(standard_action('effort_reporting'));
 			}
 			break;
-		case 'stage':
-			/*if (!isNaN(iid)) {
-				html += '<div class="duplicate button" iid="'+iid+'"><div>Dupliquer</div></div>';
-			}*/
-			break;
 	}
-	return html;
+	return actions;
 }
 
 function select_menu_item(route_url){
 	$('#menu>div.selected').removeClass('selected');
 	$('#menu>div:contains('+route_url+')').addClass('selected');
-}
-
-$(document).on('keyup','input[type="float"]',warpcore_float_input);
-function warpcore_float_input() {
-    var el = $(this);
-    var new_value = el.val().replace(/,/g,'.');
-    var old_value=new_value.slice(0, -1);
-    var val_max = el.attr('max');
-    var val_min = el.attr('min');
-    if(!/^-?(\d+\.?\d*)?$/.test(new_value)){
-        el.val(old_value);
-    }else{
-        el.val(new_value);
-    }
-    if(typeof val_max != undefined || typeof val_min != undefined){
-        el.one('keydown',function(e){
-            if(e.key == 'Enter'){
-                if(Number(el.val())<Number(val_min)){
-                    el.val(val_min);
-                }
-                if(Number(el.val())>Number(val_max)){
-                    el.val(val_max);
-                }
-                if(el.val()[el.val().length-1] == '.'){
-                    el.val(Math.floor(el.val()));
-                }
-            }
-        });
-    }
 }
 
 $(document).on('click','[element_class="tabs"]:not(.no_route_tab)>.ui_tabs_container_tabs>[name]',function(){

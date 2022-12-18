@@ -6,3 +6,85 @@
 [element_class="tree"] [table_list_lines] div[type] div.collapse_arrow {
     filter:invert(1);
 }
+
+#s_people  .ui_tabs_content>.button.create {
+    top:2vw;
+}
+
+.modal[name="effort_reporting"] .modal_content{
+    overflow-x:auto;
+}
+
+#effort_reporting{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    overflow-y:none;
+    width:360vw;
+}
+
+.month{
+    position:relative;
+    display:inline-block;
+    height:74vh;
+    width:8vw;
+    margin:2vh 1vw;
+}
+
+.month .label{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:5vh;
+    line-height:5vh;
+    font-size:1.2rem;
+    font-weight:bold;
+    text-align:center;
+}
+
+.month .effort{
+    position:absolute;
+    top:5vh;
+    bottom:0;
+    left:0;
+    right:0;
+    text-align:center;
+}
+
+.month .effort>div{
+    position:relative;
+    background:rgba(61,124,139,1);
+    color:white;
+    border-top:1vh solid white;
+}
+
+.month .effort>div:nth-child(2){
+    background:rgba(61,124,139,0.7);
+}
+
+.month .effort>div:nth-child(3){
+    background:rgba(61,124,139,0.4);
+    color:#333;
+}
+
+.month .effort .percentage{
+    position:absolute;
+    font-weight:bold;
+    left:0;
+    right:0;
+    bottom:50%;
+    padding-bottom:1vh;
+    font-size:1.5rem;    
+}
+
+.month .effort .account_code{
+    position:absolute;
+    left:0;
+    right:0;
+    top:50%;
+    padding-top:1vh;
+    font-size:1.1rem;
+}

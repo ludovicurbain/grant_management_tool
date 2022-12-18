@@ -10,7 +10,7 @@ function paint_state_people(){
 }
 
 function paint_people(){
-	var h=create_ui_element({
+	var h=painters.create_button('people')+create_ui_element({
 		'ui_element':{
 			'element_class':'tree',
 			'CSSclass':'menu',
@@ -48,4 +48,34 @@ function build_tree(o,data){
 			}
 		}
 	}
+}
+
+function effort_reporting_interface(people_id){
+	var h='<div id=effort_reporting people_id='+people_id+'>';
+	var now=new Date();
+	for(var i=0;i<36;i++){
+		var month=now.getMonth()+1;
+		var year=now.getFullYear();
+		h+='<div class=month>\
+				<div class=label>'+year+' / '+month+'</div>\
+				<div class=add_effort></div>\
+				<div class=effort>\
+					<div account_code_id=1 percentage=20 style="height:20%;">\
+						<div class=percentage>20%</div>\
+						<div class=account_code>123456</div>\
+					</div>\
+					<div account_code_id=2 percentage=30 style="height:30%;">\
+						<div class=percentage>30%</div>\
+						<div class=account_code>223456</div>\
+					</div>\
+					<div account_code_id=3 percentage=50 style="height:50%;">\
+						<div class=percentage>50%</div>\
+						<div class=account_code>323456</div>\
+					</div>\
+				</div>\
+			</div>';
+		now.setMonth(now.getMonth()+1);
+	}
+	h+='</div>';
+	return h;
 }
