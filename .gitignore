@@ -1,0 +1,12 @@
+deny/tmp/
+deny/files/
+*.sql
+allow/tmp/
+allow/attachments/
+.vscode/
+*.code-workspace
+allow/bot_test_erp/log.html
+allow/bot_test_erp/report.html
+allow/bot_test_erp/output.xml
+allow/DevScreen/
+*.log

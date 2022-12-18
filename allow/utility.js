@@ -885,3 +885,24 @@ function get_iclass_from_iclass_full_object(iclass,iid,iclass_2){
     }
     return r;
 }
+
+function popup_create_related_item_card(that,iclass,config={}){
+    var related_iclass=$(that).attr('iclass');
+    var related_iid=$(that).attr('iid');
+    var item=get_empty_item2(iclass);
+    config['item']=item;
+    config['other_item']={'iclass':related_iclass,'iid':related_iid};
+    create_modal(paint_title_modal(if_app_string('new_'+iclass))+create_item_card(iclass,config),{'name':'new_'+iclass});
+}
+
+function popup_read_item_card(that,config={}){
+    var iclass=$(that).attr('iclass');
+    var iid=$(that).attr('iid');
+    api.get_item(
+        {'iclass':iclass,'iid':iid},
+        function(item){
+            config['item']=item[0];
+            create_modal(paint_title_modal(if_app_string('edit_'+iclass))+readitem_card(iclass,config));
+        }
+    );
+}

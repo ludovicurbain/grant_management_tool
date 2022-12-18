@@ -465,71 +465,6 @@ form.upload{
 	background-color: rgb(61,124,139);
 }
 
-[element_class="table_list"] [type] .button{
-	height:1.6vw;
-	line-height:1.6vw;
-	right:21.4vw;
-	top:0.2vw;
-	bottom:auto;
-	font-size:0.8vw;
-	box-shadow:1px 1px 3px white;
-	width:20vw;
-	left:auto;
-}
-
-[element_class="table_list"] [type] .button:nth-child(2){
-	right:0.2vw;
-}
-
-
-
-.stages[element_class="table_list"] .button.print_stage{
-	right:0.4vw;
-	width: 1.6vw;
-	background-image: url('./img/print.svg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: 1.2vw;
-	background-color: rgb(61,124,139);
-}
-
-.stages[element_class="table_list"] .button.add_stage,
-.stages[element_class="table_list"] .button.add_week,
-.stages[element_class="table_list"] .button.add_participant{
-	right:0.4vw;
-	width: 1.6vw;
-	background-image: url('./img/add.svg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: 1.2vw;
-	background-color: rgb(61,124,139);
-}
-
-.stages[element_class="table_list"] .button.remove_participant{
-	right:0.4vw;
-	width: 1.6vw;
-	background-image: url('./img/delete.svg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: 1.2vw;
-	background-color: rgb(61,124,139);
-}
-
-.stages[element_class="table_list"] .button.edit_stage,
-.stages[element_class="table_list"] .button.edit_week,
-.stages[element_class="table_list"] .button.edit_season{
-	right:2.6vw;
-	width: 1.6vw;
-	background-image: url('./img/edit.svg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: 1.2vw;
-	background-color: rgb(61,124,139);
-}
-
-
-
-
 [element_class="table_list"]>input{
     width: 100%;
     max-width: 350px;
@@ -574,7 +509,7 @@ form.upload{
 	overflow:hidden;
 	text-overflow: ellipsis;
 	font-size: 1.4rem;
-	background: #050744;
+	background: #3d7c8b;
 	color: #fafafa;
 	box-shadow: 0 1px 1px #666;
 	cursor:pointer;
@@ -582,7 +517,7 @@ form.upload{
 }
 
 [element_class="table_list"] [table_list_lines] [container] [type]{
-    background: #1A1C73;
+    background: #3d7c8ba8;
     width: 99%;
     margin-left:1%;
 }
@@ -806,7 +741,6 @@ form.upload{
 	font-weight:bold;
 	text-align:center;
 	width: 12vw;
-	background:;
 	position:absolute;
 	z-index:2;
 	top:0.5vw;

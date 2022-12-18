@@ -10,6 +10,28 @@ function paint_state_grants(){
 }
 
 function paint_grants(){
-	var h=paint_generic_list_edit_iclass_tab('grants');
+	var h=create_ui_element({
+			'ui_element':{
+				'element_class':'table_list',
+				'selected_iids':[],
+				'hidden':['iclass'],
+				'inline_attributes':['iclass'],
+				'CSSclass':'grants',
+				'title_button':{
+					'1':[
+						{'class':'add_grant','label':''}
+					],
+					'2':[
+						{'class':'add_project','label':''},
+						{'class':'edit_grant','label':''}							
+					]
+				}
+			},
+			'api_call':{
+				'pa':{'m':'run_query','id':'','description':'get_projects','db_id':'this'},
+				'postcontent':{'query_parameters':{}}
+			}
+		}
+	);
 	return h;
 }

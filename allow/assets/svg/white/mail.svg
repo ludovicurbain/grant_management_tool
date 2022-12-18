@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
+    <defs>
+        <style>.a{fill:none;stroke:#fefefd;stroke-linecap:square;stroke-miterlimit:10;stroke-width:1.5px;}</style>
+    </defs>
+    <polyline class="a" points="23.5 5.5 12.5 13.5 1.5 5.5"/>
+    <rect class="a" x="1.5" y="3.5" width="22" height="18"/>
+</svg>
