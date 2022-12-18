@@ -40,4 +40,26 @@ function specific_post_relate(&$p){
 	}
 	return "success";
 }
+
+
+function get_people_tree(){
+	$people=qp("SELECT
+		p1.description AS child,
+		p1.id AS child_id,
+		p1.old_id,
+		p2.description AS parent_cat,
+		p2.id AS parent_id,
+		p.*
+	FROM
+		".rights_view('people','read')." p1
+	LEFT JOIN
+		r_people_people r1 ON r1.id_2=p1.id
+	LEFT JOIN 
+		people p2 ON r1.id_1=p2.id
+	GROUP BY
+		p1.id,p1.description,p2.id,p2.description,p1.old_id
+	ORDER BY
+		p1.description",array());	
+	return array('people'=>$people);
+}
 ?>

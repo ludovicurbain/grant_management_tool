@@ -17,7 +17,8 @@ function dynamic_boot() {
 	dynamic_load_files.local_css = [
 		'index.css',
 		'data_management/data_management.css',
-		'grants/grants.css'
+		'grants/grants.css',
+		'people/people.css'
 	];
 
 	dynamic_load_files.specific_css = [
@@ -70,7 +71,11 @@ function dynamic_boot() {
 		'grants/grants.js',
 		'grants/grants_loader.js',
 		'grants/grants_handler.js',
-		'grants/grants_painter.js'
+		'grants/grants_painter.js',
+		'people/people.js',
+		'people/people_loader.js',
+		'people/people_handler.js',
+		'people/people_painter.js'
 	];
 
 	dynamic_load_files.specific_js = [
