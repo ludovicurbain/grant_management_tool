@@ -1,30 +1,8 @@
-[sub_header] .button{
-    display:block;
-    position:absolute;
-    right:0;
-    width: 2vw;
-    height: 2vw;
-    top: 0;
+#s_people [element_class="tree"]{
+    top:2vw;
+    width:15vw;
 }
 
-[sub_header] .button:nth-child(2){
-    right:2vw;
-}
-
-.add_grant,
-.add_project{
-    background-image: url(../assets/svg/white/add.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 50% auto;
-    color: white;
-}
-
-.edit_sponsor,
-.edit_grant{
-    background-image: url(../assets/svg/white/edit.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 50% auto;
-    color: white;
+[element_class="tree"] [table_list_lines] div[type] div.collapse_arrow {
+    filter:invert(1);
 }
