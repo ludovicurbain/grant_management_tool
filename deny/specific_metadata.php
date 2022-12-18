@@ -49,7 +49,7 @@ function get_people_tree(){
 		p1.old_id,
 		p2.firstname||' '||p2.lastname AS parent_cat,
 		p2.id AS parent_id,
-		p.*
+		p1.*
 	FROM
 		".rights_view('people','read')." p1
 	LEFT JOIN
