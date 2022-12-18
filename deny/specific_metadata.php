@@ -44,10 +44,10 @@ function specific_post_relate(&$p){
 
 function get_people_tree(){
 	$people=qp("SELECT
-		p1.description AS child,
+		p1.firstname||' '||p1.lastname AS child,
 		p1.id AS child_id,
 		p1.old_id,
-		p2.description AS parent_cat,
+		p2.firstname||' '||p2.lastname AS parent_cat,
 		p2.id AS parent_id,
 		p.*
 	FROM
@@ -57,9 +57,9 @@ function get_people_tree(){
 	LEFT JOIN 
 		people p2 ON r1.id_1=p2.id
 	GROUP BY
-		p1.id,p1.description,p2.id,p2.description,p1.old_id
+		p1.id,p1.firstname,p1.lastname,p2.id,p2.firstname,p2.lastname,p1.old_id
 	ORDER BY
-		p1.description",array());	
+		p1.lastname",array());	
 	return array('people'=>$people);
 }
 ?>
