@@ -1,10 +1,10 @@
 var data_management_tabs=[
-	{'label':'salary_caps','name':'salary_caps','fct':'salary_caps'},
-	{'label':'terminal_degrees','name':'terminal_degrees','fct':'degree_data'},
-	{'label':'sponsors','name':'sponsors','fct':'sponsor_data'},
-	{'label':'job_category','name':'job_category','fct':'job_category_data'},
-	{'label':'account_code','name':'account_code','fct':'account_code_data'},
-	{'label':'other','name':'other','fct':'other_settings'}
+	{'label':'Salary caps','name':'salary_caps','fct':'salary_caps'},
+	{'label':'Terminal degrees','name':'terminal_degrees','fct':'degree_data'},
+	{'label':'Sponsors','name':'sponsors','fct':'sponsor_data'},
+	{'label':'Job type','name':'job_category','fct':'job_category_data'},
+	{'label':'Account codes','name':'account_code','fct':'account_code_data'},
+	{'label':'Other','name':'other','fct':'other_settings'}
 ];
 
 states['data_management']={

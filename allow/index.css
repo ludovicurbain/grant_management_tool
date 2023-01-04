@@ -621,7 +621,7 @@ form.upload{
 	height:100%;
 	padding: 0 5px;
 	font-size:1.2rem;
-	text-align: left;
+	text-align: center;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -998,4 +998,12 @@ body.light_mode .modal_content {
 .buttonTd{
 	margin-top:1vw;
 	text-align:center;
+}
+
+[element_class="table_list"] [table_list_lines] .table_list_line input[type="checkbox"]{
+	border:none;
+	box-shadow:none;
+	pointer-events:none;
+	height:1vw;
+	width:1vw;
 }
