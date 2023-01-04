@@ -79,3 +79,27 @@ function effort_reporting_interface(people_id){
 	h+='</div>';
 	return h;
 }
+
+function effort_reporting_one_month(people_id,month){
+	var h='<div id=effort_reporting_one_month people_id='+people_id+' month="'+month+'">';
+	h+='<div class="effort">\
+			<div account_code_id="1" percentage="20" style="height:20%;">\
+				<div class="percentage">20%</div>\
+				<div class="account_code">123456</div>\
+			</div>\
+			<div account_code_id="2" percentage="30" style="height:30%;">\
+				<div class="percentage">30%</div>\
+				<div class="account_code">223456</div>\
+			</div>\
+			<div account_code_id="3" percentage="50" style="height:50%;">\
+				<div class="percentage">50%</div>\
+				<div class="account_code">323456</div>\
+			</div>\
+		</div>';
+	h+='<div class=config>\
+			<div class=label>Copy Over</div>\
+			<div class=check></div>\
+		</div>';
+	h+='</div>';
+	return h;
+}

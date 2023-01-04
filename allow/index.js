@@ -68,11 +68,6 @@ function delete_modal(){
 
 $(document).on('click','.modal_glasspane,.close_modal',delete_modal);
 
-register_callback(['item_card_edit','category'],function(o){
-	delete_modal();
-	route('',false,true);
-});
-
 function generic_new_item_modal(c,app_string,relations={}){
 	api.empty_item({ 'iclass': c['iclass'] }, function (data) {
 		create_modal('<div class="title">'+app_string+'</div>' + create_item_card(c['iclass'], { 'item': data,"relations": relations,'other_item': { 'iclass': c['iclass_2'], 'iid': c['iid_2'] } }, 'div'));
@@ -123,3 +118,5 @@ $(document).on('click','[element_class="tabs"]:not(.no_route_tab)>.ui_tabs_conta
 	url.push($(this).attr('name'));
 	route('#'+url.join('|'));
 });
+
+appText['en']['No data were found']='No data';

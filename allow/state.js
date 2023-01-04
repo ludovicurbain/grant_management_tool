@@ -45,6 +45,9 @@ function set_new_route(new_route, is_back){
 		global_object['url']=new_route;
 		history.pushState(global_object, new_route,new_route);
 	}
+	if(new_route==''){
+		new_route=document.URL.split('index.html')[1];
+	}
 	return new_route;
 }
 
