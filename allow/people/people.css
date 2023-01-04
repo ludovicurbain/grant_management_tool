@@ -88,3 +88,11 @@
     padding-top:1vh;
     font-size:1.1rem;
 }
+
+.people_container{
+    position:absolute;
+    top:5vw;
+    left:17vw;
+    right:0;
+    bottom:0;
+}

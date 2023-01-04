@@ -19,7 +19,7 @@ function paint_people(){
 			'draggable':true
 		},
 		'api_call':{'pa':{'m':'get_people_tree'},'postcontent':{}}
-	});
+	})+'<div class=people_container></div>';
 	return h;
 }
 

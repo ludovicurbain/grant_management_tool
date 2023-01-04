@@ -768,6 +768,39 @@ function edit_with_generic_relations_popup(){
 	false);
 }
 
+function edit_with_generic_relations_item_card(iclass,iid,selector){
+	var get_relations=[];
+	if(hasProp(item_card_default_relations,iclass)){
+		for(var i=0;i<item_card_default_relations[iclass].length;i++){
+			get_relations.push(item_card_default_relations[iclass][i]['iclass']);
+		}
+	}
+	apiCall(
+		{'m':'get_item_with_related_items'},
+		function(data){
+			push_to_storage(data);
+			var item_card_relations={};
+			if(hasProp(item_card_default_relations,iclass)){
+				for(var i=0;i<item_card_default_relations[iclass].length;i++){
+					var iclass_2=item_card_default_relations[iclass][i]['iclass'];
+					if(!hasProp(storage['full_object'][iclass][iid]['relations'],iclass_2)){
+						storage['full_object'][iclass][iid]['relations'][iclass_2]=[];
+					}
+					item_card_relations[iclass_2]={'iid':get_full_object_relation_iids(storage['full_object'][iclass][iid]['relations'][iclass_2]),'relation_label':if_app_string(iclass_2),'multiple':false,'mandatory':false};
+				}
+			}
+			var item_card_config={'item': storage['full_object'][iclass][iid]['changes'],'relations':item_card_relations};
+			item_card_default_override(iclass,item_card_config);
+			$(selector).html(readitem_card(iclass,item_card_config));
+		},
+		{
+			'iclass':iclass,
+			'iid':iid,
+			'relations':get_relations
+		},
+	false);
+}
+
 function item_card_default_override(iclass,item_card_config){
 	switch(iclass){
 		case 'contract_blueprint':
