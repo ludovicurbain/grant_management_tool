@@ -13,3 +13,7 @@ $(document).on('click','#effort_reporting .month',function(){
     var month=$(this).find('.label').html();
     create_modal(effort_reporting_one_month(people_id,month),{'name':'effort_reporting_one_month'});
 });
+
+$(document).on('wheel','.modal[name="effort_reporting"] .modal_content',function(e){
+	$(this)[0].scrollLeft+=e.originalEvent.deltaY;
+});

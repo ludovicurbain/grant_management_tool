@@ -1007,3 +1007,10 @@ body.light_mode .modal_content {
 	height:1vw;
 	width:1vw;
 }
+
+[element_class="tag"] .tag .close{
+	background-image:url('assets/svg/white/cancel.svg');
+	background-repeat:no-repeat;
+	background-size:50% auto;
+	background-position:center;
+}
