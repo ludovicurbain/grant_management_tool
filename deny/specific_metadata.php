@@ -1,9 +1,5 @@
 <?php
 
-include_once '/var/www/grant_management_tool/deny/stage.php';
-include_once '/var/www/generic/deny/erp/import.php';
-include_once '/var/www/grant_management_tool/deny/club_import.php';
-
 function specific_pre_edit(&$p){
 	$return="";	
 	switch($p["iclass"]){
