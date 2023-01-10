@@ -150,7 +150,7 @@ function import_people_generic($p,$table_name){
 		"INSERT INTO salary(start_date,amount,old_id)
 		SELECT
 			EXTRACT(EPOCH FROM NOW()),
-			t.salary,
+			t.salary::float,
 			p.id
 		FROM ".$table_name." t
 		INNER JOIN people p ON p.email=t.email
