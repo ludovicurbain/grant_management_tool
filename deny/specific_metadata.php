@@ -146,6 +146,28 @@ function import_people_generic($p,$table_name){
 		WHERE rpdt.id_2 IS NULL;",array()
 	);
 
-	//import_people_relation($table_name,array('id'=>$category_col),array('id'=>$supplier_col));
+	qp(
+		"INSERT INTO salary(start_date,amount,old_id)
+		SELECT
+			EXTRACT(EPOCH FROM NOW()),
+			t.salary,
+			p.id
+		FROM ".$table_name." t
+		INNER JOIN people p ON p.email=t.email
+		LEFT JOIN r_people_salary rps ON rps.id_1=p.id
+		WHERE rps.id_2 IS NULL;",array()
+	);
+
+	qp(
+		"INSERT INTO r_people_salary(id_1,id_2)
+		SELECT
+			p.id,
+			s.id
+		FROM ".$table_name." t
+		INNER JOIN people p ON p.email=t.email
+		INNER JOIN salary s ON s.old_id=p.id
+		LEFT JOIN r_people_salary rps ON rps.id_1=p.id
+		WHERE rps.id_2 IS NULL;",array()
+	);
 }
 ?>
