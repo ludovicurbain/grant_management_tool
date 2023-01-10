@@ -104,8 +104,8 @@ function import_people_generic($p,$table_name){
 			firstname=t.firstname,
 			lastname=t.lastname,
 			phone=t.phone,
-			fte_percentage=t.fte_percentage,
-			benefit_rate=t.benefit_rate
+			fte_percentage=t.fte_percentage::float,
+			benefit_rate=t.benefit_rate::float
 		FROM
 			people p2
 		INNER JOIN
@@ -123,8 +123,8 @@ function import_people_generic($p,$table_name){
 			t.lastname,
 			t.email,
 			t.phone,
-			t.fte_percentage,
-			t.benefit_rate
+			t.fte_percentage::float,
+			t.benefit_rate::float
 		FROM ".$table_name." t
 		LEFT JOIN
 			(
