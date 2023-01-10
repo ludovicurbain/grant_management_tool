@@ -60,7 +60,7 @@ function get_people_tree(){
 	return array('people'=>$people);
 }
 
-function import_people(){
+function import_people(&$p){
 	$table_name='tmp_people';
 	$old_count=qp("SELECT count(p.id) FROM people p;",array())[0]['count'];
 	create_tmp_table_from_json($p['post']['content'],$table_name);
