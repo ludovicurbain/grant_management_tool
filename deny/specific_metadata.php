@@ -134,6 +134,18 @@ function import_people_generic($p,$table_name){
 		WHERE p.id IS NULL;",array()
 	);
 
+	qp(
+		"INSERT INTO r_people_degree_type(id_1,id_2)
+		SELECT
+			p.id,
+			dt.id
+		FROM ".$table_name." t
+		INNER JOIN people p ON p.email=t.email
+		INNER JOIN degree_type dt ON dt.description=t.terminal_degree
+		LEFT JOIN r_people_degree_type rpdt ON rpdt.id_1=p.id
+		WHERE rpdt.id_2 IS NULL;",array()
+	);
+
 	//import_people_relation($table_name,array('id'=>$category_col),array('id'=>$supplier_col));
 }
 ?>
