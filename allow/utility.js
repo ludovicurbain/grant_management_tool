@@ -736,6 +736,10 @@ $(document).on('click','.generic_item_list .table_list_line[iid]',edit_with_gene
 function edit_with_generic_relations_popup(){
 	var iclass=$(this).closest('[iclass]').attr('iclass');
 	var iid=$(this).attr('iid');
+	edit_with_generic_relations_popup_inner(iclass,iid);
+}
+
+function edit_with_generic_relations_popup_inner(iclass,iid){
 	var get_relations=[];
 	if(hasProp(item_card_default_relations,iclass)){
 		for(var i=0;i<item_card_default_relations[iclass].length;i++){
@@ -766,6 +770,7 @@ function edit_with_generic_relations_popup(){
 			'relations':get_relations
 		},
 	false);
+
 }
 
 function edit_with_generic_relations_item_card(iclass,iid,selector){

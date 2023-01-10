@@ -19,7 +19,7 @@ function paint_people(){
 			'draggable':true
 		},
 		'api_call':{'pa':{'m':'get_people_tree'},'postcontent':{}}
-	})+'<div class=people_container></div>';
+	})+'<div class=people_container>'+paint_drop_zone('people','people')+'</div>';
 	return h;
 }
 
@@ -48,6 +48,18 @@ function build_tree(o,data){
 			}
 		}
 	}
+}
+
+function manage_salaries_interface(people_id){
+	var h='<div class="title">'
+		+ if_app_string('manage_salary') +'\
+		</div>'+
+		painters.create_related_button('salary','people',people_id)+'\
+	'+create_ui_element({
+		'ui_element':{'element_class':'table_list','selected_iids':[],'CSSclass':'has_title'},
+		'api_call':{'pa':{'m':'run_query','id': '','description':'get_people_salaries','db_id': 'this'},'postcontent':{'query_parameters':{'get_people_salaries_people_id': people_id}}}
+	})
+	return h;
 }
 
 function effort_reporting_interface(people_id){
@@ -102,4 +114,16 @@ function effort_reporting_one_month(people_id,month){
 		</div>';
 	h+='</div>';
 	return h;
+}
+
+
+function paint_drop_zone(label,data_type) {
+	var h=
+		'<div class="import_wrapper">\
+			<div class="title">'+label+'</div>\
+			<div class=drop_zone>\
+				<input data_type="'+data_type+'" type="file"></input>\
+			</div>\
+		</div>';
+        return h;
 }

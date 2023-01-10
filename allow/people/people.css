@@ -96,3 +96,52 @@
     right:0;
     bottom:0;
 }
+
+.modal_content>.has_title{
+    position:absolute;
+    top:5vw;
+    left:1vw;
+    right:1vw;
+    bottom:1vw;
+}
+
+.modal_content>.button.create_related{
+    position:absolute;
+    z-index:2;
+    top:5vw;
+    right:5vw;
+}
+
+.drop_zone{
+	display:flex;
+	height: 4.25vw;
+	border: 0.25vw #d4d4d4 dashed;
+	cursor:pointer;
+}
+
+input[type="file"]{
+	align-self: center;
+	cursor:pointer;
+}
+
+.drop_zone_has_file{
+	background-color:#03a9f44d;
+}
+
+.drop_zone_file_uploaded{
+	background-color:#0bf4034d;
+}
+
+#import.disabled{
+	background-color: #AAAF;
+	pointer-events: none;
+	box-shadow: inset 0vw 0vw 2vw black;
+}
+
+.import_wrapper{
+	margin-bottom: 1.25vw;
+}
+
+.drop_zone_highlight{
+	background-color:#d6d6d64d;
+}
