@@ -1,4 +1,5 @@
 <?php
+include_once "/var/www/generic/deny/erp/import.php";
 
 function specific_pre_edit(&$p){
 	$return="";	
@@ -60,7 +61,7 @@ function get_people_tree(){
 }
 
 function import_people(){
-	$table_name='tmp_people_'.$_SESSION[$GLOBALS['appname']]["login"]["erp_account_id"];
+	$table_name='tmp_people';
 	$old_count=qp("SELECT count(p.id) FROM people p;",array())[0]['count'];
 	create_tmp_table_from_json($p['post']['content'],$table_name);
 	import_people_generic($p,$table_name);
@@ -96,14 +97,6 @@ function create_tmp_table_from_json($data,$table_name){
 }
 
 function import_people_generic($p,$table_name){
-	$category_col='category_id';
-	$supplier_col='supplier_id';
-
-	qp("ALTER TABLE ".$table_name." ADD COLUMN ".$category_col." integer;",array());
-	qp("ALTER TABLE ".$table_name." ADD COLUMN ".$supplier_col." integer;",array());
-	qp("UPDATE ".$table_name." SET ".$supplier_col."=(SELECT p.id FROM party p INNER JOIN r_erp_account_party rep ON rep.id_2=p.id INNER JOIN r_erp_group_erp_account regea ON regea.id_2=rep.id_1 INNER JOIN r_party_party_type rppt ON rppt.id_1=p.id  INNER JOIN party_type pt ON pt.id=rppt.id_2 WHERE regea.id_1=$1 AND pt.description=$2 AND p.description=supplier_name AND (p.old_id IS NULL OR p.old_id NOT LIKE '%default%')) ;",array($_SESSION[$GLOBALS['appname']]["login"]["erp_group_id"],'supplier'));
-	qp(encode("UPDATE ".$table_name." SET ".$category_col."=(SELECT c.id FROM category c INNER JOIN r_erp_account_category r1 ON r1.id_2=c.id INNER JOIN r_erp_group_erp_account r2 ON r2.id_2=r1.id_1 WHERE r2.id_1=self::erp_groupid AND c.description=category_name AND (c.old_id IS NULL OR c.old_id NOT LIKE '%default%')) ;",'rights'),array());
-
 	qp(
 		"
 		UPDATE people p
