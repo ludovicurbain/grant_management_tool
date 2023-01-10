@@ -165,7 +165,7 @@ function import_people_generic($p,$table_name){
 			s.id
 		FROM ".$table_name." t
 		INNER JOIN people p ON p.email=t.email
-		INNER JOIN salary s ON s.old_id=p.id
+		INNER JOIN salary s ON s.old_id=p.id::varchar(255)
 		LEFT JOIN r_people_salary rps ON rps.id_1=p.id
 		WHERE rps.id_2 IS NULL;",array()
 	);
